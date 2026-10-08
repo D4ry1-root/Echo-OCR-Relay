@@ -10,7 +10,11 @@ Photographie un texte avec ton téléphone, retrouve-le instantanément sur ton 
 
 ## Lancer le projet
 Prérequis : Node.js (version LTS)
+Télécharge les fichiers
+Crée un dossier
+CD dans le dossier
 
+    cd Echo (exemple)
     npm install
     npm run dev
 
