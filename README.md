@@ -23,3 +23,5 @@ TypeScript, Node.js, Express, Socket.IO, Tesseract.js
 ## Avertissement
 Echo n'a pas d'authentification : tout appareil du même réseau peut l'ouvrir.
 À utiliser sur un réseau de confiance.
+
+![Écran d'accueil d'Echo](docs/accueil.png)
