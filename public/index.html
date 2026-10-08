@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#060a11">
+  <title>Echo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=6">
+</head>
+<body>
+  <main>
+    <header class="barre">
+      <button class="retour" id="retour" aria-label="Retour" hidden>‹</button>
+      <span class="logo">Echo</span>
+      <span class="etat"><span id="connexion" class="point"></span><span id="etat-texte">Hors ligne</span></span>
+    </header>
+
+    <!-- ACCUEIL -->
+    <section class="vue actif" id="vue-accueil">
+      <div class="anneaux"><i></i><i></i><i></i></div>
+      <p class="salut" id="salut"></p>
+      <h1>Que veux-tu envoyer à ton ordinateur&nbsp;?</h1>
+      <nav class="menu">
+        <button class="rang" data-vue="scanner">
+          <svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span><b>Scanner un texte</b><small>Photographie un tableau ou un polycopié</small></span>
+          <span class="fleche">›</span>
+        </button>
+        <button class="rang" data-vue="ecrire">
+          <svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg>
+          <span><b>Écrire un message</b><small>Envoie une note ou un lien à l'autre appareil</small></span>
+          <span class="fleche">›</span>
+        </button>
+        <button class="rang" data-vue="historique">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          <span><b>Historique</b><small>Retrouve et copie tes textes précédents</small></span>
+          <span class="fleche">›</span>
+        </button>
+        <button class="rang" data-vue="reglages">
+          <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+          <span><b>Réglages</b><small>Langue de lecture du texte</small></span>
+          <span class="fleche">›</span>
+        </button>
+      </nav>
+    </section>
+
+    <!-- SCANNER -->
+    <section class="vue" id="vue-scanner">
+      <h2>Scanner un texte</h2>
+      <p class="aide">Prends une photo, ou importe une image ou un fichier.</p>
+      <label for="photo" class="capture" title="Prendre une photo">
+        <svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+      </label>
+      <div class="sources">
+        <label class="btn" for="galerie">Galerie</label>
+        <label class="btn" for="fichier">Fichier</label>
+      </div>
+      <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+      <input id="galerie" type="file" accept="image/*" hidden>
+      <input id="fichier" type="file" accept=".pdf,.txt,.md,.csv,.json,.log,image/*" hidden>
+      <div id="ondes" class="ondes"><span></span><span></span><span></span><p id="statut"></p></div>
+      <div id="dernier" class="resultat" hidden></div>
+    </section>
+
+    <!-- ÉCRIRE -->
+    <section class="vue" id="vue-ecrire">
+      <h2>Écrire un message</h2>
+      <textarea id="champ" placeholder="Colle ou écris ton texte ici"></textarea>
+      <button class="btn plein" id="bouton">Envoyer</button>
+    </section>
+
+    <!-- HISTORIQUE -->
+    <section class="vue" id="vue-historique">
+      <h2>Historique</h2>
+      <div class="actions">
+        <button class="btn" id="tout-copier">Tout copier</button>
+        <button class="btn" id="vider">Vider</button>
+      </div>
+      <p id="vide" class="aide">Rien pour l'instant. Scanne un texte pour commencer.</p>
+      <ul id="liste"></ul>
+    </section>
+
+    <!-- RÉGLAGES -->
+    <section class="vue" id="vue-reglages">
+      <h2>Réglages</h2>
+      <label for="prenom" class="aide">Ton prénom</label>
+      <input id="prenom" placeholder="Facultatif" maxlength="30">
+      <label for="langue" class="aide">Langue du texte à lire</label>
+      <select id="langue">
+        <option value="fra">Français</option>
+        <option value="eng">Anglais</option>
+        <option value="fra+eng">Français et anglais</option>
+      </select>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/client.js?v=6"></script>
+</body>
+</html>

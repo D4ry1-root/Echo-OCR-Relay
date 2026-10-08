@@ -1,0 +1,28 @@
+{
+  "name": "echo",
+  "version": "1.0.0",
+  "description": "Photographie un texte avec ton téléphone, retrouve-le sur ton PC",
+  "private": true,
+  
+  "scripts": 
+  {
+  "serveur": "tsx watch src/server.ts",
+  "client": "tsc -p tsconfig.client.json --watch",
+  "dev": "concurrently \"npm:serveur\" \"npm:client\""
+},
+  "type": "commonjs",
+  "devDependencies": 
+  {
+    "@types/express": "^5.0.6",
+    "socket.io-client": "^4.8.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": 
+  {
+    "express": "^5.2.1",
+    "pdf-parse": "^1.1.1",
+    "socket.io": "^4.8.4",
+    "tesseract.js": "^7.0.0"
+  }
+}
